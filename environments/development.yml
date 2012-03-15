@@ -1,0 +1,25 @@
+# configuration file for development environment
+
+# the log level for this environement
+# core is the lowest, it shows Dancer's core log messages as well as yours
+# (debug, warning and error)
+log: "core"
+logger: "console"
+
+# should Dancer consider warnings as critical errors?
+warnings: 1
+
+# should Dancer show a stacktrace when an error is caught?
+show_errors: 1
+
+plugins:
+    DBIC:
+        default:
+            dsn: dbi:SQLite:db/paste.db
+            schema_class: WWW::Hashbang::Pastebin::Schema
+
+# engines:
+    # xslate:
+        # cache: 0
+
+key: abcdefghijklmnopqrstuvwxyz0123456789

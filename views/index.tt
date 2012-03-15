@@ -1,0 +1,21 @@
+<pre>
+WWW::Hashbang::Pastebin(3)      User Contributed Perl Documentation      WWW::Hashbang::Pastebin(3)
+
+NAME
+    <a href="https://metacpan.org/module/WWW::Hashbang::Pastebin">WWW::Hashbang::Pastebin</a> - command line pastebin
+
+SYNOPSIS
+    command | curl -F 'p=<-' <% url %>
+
+DESCRIPTION
+    Append a period to the resulting url for line numbers. Add an anchor like
+    #l10 jump to the given line number, or click the line number you want.
+
+EXAMPLES
+    ~$ curl -F 'p=<-' <% url %> < /var/log/maillog
+       <% url %>VZiY
+    ~$ chromium-browser <% url %>.VZiY#l7
+
+SEE ALSO
+    <a href="http://sprunge.us">http://sprunge.us</a>
+</pre>

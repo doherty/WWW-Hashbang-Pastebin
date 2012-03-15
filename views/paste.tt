@@ -1,0 +1,20 @@
+<% lines = content.split("\n") %>
+<% BLOCK line_text -%>
+<a name="n-<% lineno %>"></a><% text %>
+<% END %>
+
+<% BLOCK line_num -%>
+<a href="#l<% lineno %>" name="l<% lineno %>"><% lineno %></a>
+<% END %>
+
+<table>
+<tr>
+<td>
+<pre id="linenos">
+<% PROCESS line_num lineno=loop.count FOREACH line IN lines %></pre>
+</td>
+<td>
+<pre id="paste">
+<% content %></pre>
+</td>
+</table>
