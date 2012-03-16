@@ -1,21 +1,26 @@
 <pre>
-WWW::Hashbang::Pastebin(3)      User Contributed Perl Documentation      WWW::Hashbang::Pastebin(3)
-
+                                                WWW::Hashbang::Pastebin(3)
 NAME
     <a href="https://metacpan.org/module/WWW::Hashbang::Pastebin">WWW::Hashbang::Pastebin</a> - command line pastebin
 
 SYNOPSIS
-    command | curl -F 'p=<-' <% url %>
+    $ (hostname ; uptime) | curl -F 'p=<-' <% request.uri_base %>
+    <% request.uri_base %>/f4s2
+
+    $ chromium-browser <% request.uri_base %>/f4s2.#l7
 
 DESCRIPTION
-    Append a period to the resulting url for line numbers. Add an anchor like
-    #l10 jump to the given line number, or click the line number you want.
+    This pastebin has no user interface - use "curl" or
+    <a href="https://metacpan.org/module/WWW::Hashbang::Pastebin::Client">WWW::Hashbang::Pastebin::Client</a>'s "p" command to POST paste content.
+    Your paste's ID is returned in the "X-Pastebin-ID" header; the
+    URL in the "X-Pastebin-URL", as well as the response content.
 
-EXAMPLES
-    ~$ curl -F 'p=<-' <% url %> < /var/log/maillog
-       <% url %>VZiY
-    ~$ chromium-browser <% url %>.VZiY#l7
+    Append a period to the URL to get line numbers. Add an anchor like "#l1"
+    to jump to the given line number, or click the line number you want.
 
 SEE ALSO
-    <a href="http://sprunge.us">http://sprunge.us</a>
+    · <a href="http://sprunge.us">http://sprunge.us</a>
+    · <a href="http://p.defau.lt">http://p.defau.lt</a>
+
+<a href="http://www.perl.org/">perl v5.14.2</a>                                    WWW::Hashbang::Pastebin(3)
 </pre>

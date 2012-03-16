@@ -1,4 +1,6 @@
 package WWW::Hashbang::Pastebin::Schema::Result::Paste;
+use strict;
+use warnings;
 use base qw/DBIx::Class::Core/;
 # VERSION
 # ABSTRACT: represents a paste in the pastebin

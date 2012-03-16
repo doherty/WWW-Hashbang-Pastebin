@@ -2,14 +2,14 @@
 use strict;
 use warnings;
 
-use 5.006;
+use 5.014000;
 
 use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "a pastebin with no UI; a Perl Dancer clone of http://sprunge.us",
+  "ABSTRACT" => "command line pastebin",
   "AUTHOR" => "Mike Doherty <doherty\@cpan.org>",
   "BUILD_REQUIRES" => {
     "Dancer::Test" => 0,

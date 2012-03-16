@@ -1,15 +1,37 @@
 package WWW::Hashbang::Pastebin;
-use v5.14.0;
 use strict;
 use warnings;
+use 5.014000;
 use Dancer ':syntax';
 use Dancer::Plugin::DBIC qw(schema);
 use Integer::Tiny;
 use Try::Tiny;
 use DateTime;
 
-# ABSTRACT: a pastebin with no UI; a Perl Dancer clone of http://sprunge.us
+# ABSTRACT: command line pastebin
 # VERSION
+
+=head1 SYNOPSIS
+
+    $ (hostname ; uptime) | curl -F 'p=<-' http://p.hashbang.ca
+    http://p.hashbang.ca/f4s2
+    $ chromium-browser http://p.hashbang.ca/f4s2.#l7
+
+=for test_synopsis
+1;
+__END__
+
+=head1 DESCRIPTION
+
+This pastebin has no user interface - use C<curl> or L<WWW::Hashbang::Pastebin::Client>'s
+C<p> command to POST paste content. Your paste's ID is returned in the
+C<X-Pastebin-ID> header; the URL in the C<X-Pastebin-URL>, as well as the response
+content.
+
+Append a period to the URL to get line numbers. Add an anchor like C<#l1> to
+jump to the given line number, or click the line number you want.
+
+=cut
 
 my $mapper = do {
     my $key = config->{key} || join '', ('a'..'z', 0..9);
@@ -19,7 +41,7 @@ my $mapper = do {
 
 
 get '/' => sub {
-    return template index => { url => uri_for('') };
+    return template 'index';
 };
 
 post '/' => sub {
@@ -81,5 +103,17 @@ get '/:id' => sub {
         return $paste->content;
     }
 };
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<http://sprunge.us>
+
+=item * L<http://p.defau.lt>
+
+=back
+
+=cut
 
 true;

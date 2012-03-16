@@ -18,7 +18,7 @@ my %module_build_args = (
     "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
-  "dist_abstract" => "a pastebin with no UI; a Perl Dancer clone of http://sprunge.us",
+  "dist_abstract" => "command line pastebin",
   "dist_author" => [
     "Mike Doherty <doherty\@cpan.org>"
   ],
@@ -41,7 +41,7 @@ my %module_build_args = (
     "Starman" => 0,
     "Try::Tiny" => 0,
     "base" => 0,
-    "perl" => "5.006",
+    "perl" => "5.014000",
     "strict" => 0,
     "warnings" => 0
   },

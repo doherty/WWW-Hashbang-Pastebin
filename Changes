@@ -1,0 +1,4 @@
+Changelog for {{$dist->name}}
+
+{{$NEXT}}
+ * Initial version
