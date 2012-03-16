@@ -1,4 +1,6 @@
 Changelog for {{$dist->name}}
 
 {{$NEXT}}
+
+0.001     2012-03-16
  * Initial version
