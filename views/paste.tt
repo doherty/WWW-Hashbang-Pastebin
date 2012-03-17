@@ -17,4 +17,5 @@
 <pre id="paste">
 <% content %></pre>
 </td>
+</tr>
 </table>

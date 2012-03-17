@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=<% settings.charset %>" />
 <title>WWW::Hashbang::Pastebin</title>
-<style>
+<style type="text/css">
 body        { background: #ffffff; }
 a           { text-decoration: none; }
 #linenos    { background-color: #f0f0f0; margin: 0; padding: 0 10px 0 5px; }

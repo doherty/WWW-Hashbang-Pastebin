@@ -4,7 +4,7 @@ NAME
     <a href="https://metacpan.org/module/WWW::Hashbang::Pastebin">WWW::Hashbang::Pastebin</a> - command line pastebin
 
 SYNOPSIS
-    $ (hostname ; uptime) | curl -F 'p=<-' <% request.uri_base %>
+    $ (hostname ; uptime) | curl -F 'p=&lt;-' <% request.uri_base %>
     <% request.uri_base %>/f4s2
 
     $ chromium-browser <% request.uri_base %>/f4s2.#l7
