@@ -8,10 +8,10 @@ use Module::Build 0.3601;
 my %module_build_args = (
   "build_requires" => {
     "Dancer::Test" => 0,
-    "File::Copy" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Module::Build" => "0.3601",
+    "Test::DBIx::Class" => 0,
     "Test::More" => 0
   },
   "configure_requires" => {
@@ -40,6 +40,7 @@ my %module_build_args = (
     "Plack" => 0,
     "Starman" => 0,
     "Try::Tiny" => 0,
+    "YAML" => 0,
     "base" => 0,
     "perl" => "5.014000",
     "strict" => 0,

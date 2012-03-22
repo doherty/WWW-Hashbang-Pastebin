@@ -4,7 +4,12 @@ use Test::More;
 
 # the order is important
 use WWW::Hashbang::Pastebin;
+use Dancer::Plugin::DBIC;
 use Dancer::Test;
+
+schema->deploy;
+my $data = do 't/etc/schema.pl';
+schema->populate(@{ $data->{fixture_sets}->{basic} });
 
 my @invalid_ids = (')', '.b');
 plan tests => 3*@invalid_ids;

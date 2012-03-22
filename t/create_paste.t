@@ -4,12 +4,10 @@ use Test::More tests => 5;
 
 # the order is important
 use WWW::Hashbang::Pastebin;
+use Dancer::Plugin::DBIC;
 use Dancer::Test;
 
-END {
-    require File::Copy;
-    File::Copy::copy('db/paste.db.bak', 'db/paste.db');
-}
+schema->deploy;
 
 my $rand = rand();
 route_exists [POST => '/'], 'a route handler is defined for POST /';

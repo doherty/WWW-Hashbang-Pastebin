@@ -11,8 +11,8 @@ route_cache: 1
 plugins:
     DBIC:
         default:
-            dsn: dbi:mysql:mike
-            user: mike
+            dsn: dbi:mysql:pastebin
+            user: pastebin
             pass: 
             schema_class: WWW::Hashbang::Pastebin::Schema
 
