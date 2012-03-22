@@ -53,7 +53,7 @@ post '/' => sub {
         return 'No paste content received';
     }
 
-    my $now = DateTime->now;
+    my $now = DateTime->now( time_zone => 'UTC' );
     my $row = schema->resultset('Paste')->create({
         paste_content => $paste_content,
         paste_date    => $now,
