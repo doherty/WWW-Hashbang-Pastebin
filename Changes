@@ -1,6 +1,8 @@
 Changelog for {{$dist->name}}
 
 {{$NEXT}}
+
+0.002     2012-03-22
  * Add missing YAML dependency
  * Use Test::DBIx::Class for in-memory SQLite DB
  * Escaping in templates
