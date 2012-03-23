@@ -15,5 +15,7 @@ plugins:
             user: pastebin
             pass: 
             schema_class: WWW::Hashbang::Pastebin::Schema
+    EscapeHTML:
+        automatic_escaping: 1
 
 key: SbZ7ethU8BqLRGEnFckWiJw9-ACMjxpO_rafzoI2Hs3mvgXDy+$PVdNYTu1K!l50Q46

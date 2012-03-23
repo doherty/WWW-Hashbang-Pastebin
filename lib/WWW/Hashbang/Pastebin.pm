@@ -4,6 +4,7 @@ use warnings;
 use 5.014000;
 use Dancer ':syntax';
 use Dancer::Plugin::DBIC qw(schema);
+use Dancer::Plugin::EscapeHTML qw(escape_html);
 use Integer::Tiny;
 use Try::Tiny;
 use DateTime;

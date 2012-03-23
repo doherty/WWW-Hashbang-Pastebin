@@ -17,6 +17,8 @@ plugins:
         default:
             dsn: dbi:SQLite:dbname=:memory:
             schema_class: WWW::Hashbang::Pastebin::Schema
+    EscapeHTML:
+        automatic_escaping: 1
 
 # engines:
     # xslate:
