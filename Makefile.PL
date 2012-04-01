@@ -42,13 +42,14 @@ my %WriteMakefileArgs = (
     "Plack" => 0,
     "SQL::Translator" => "0.11006",
     "Starman" => 0,
+    "Template" => 0,
     "Try::Tiny" => 0,
     "YAML" => 0,
     "base" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.002",
+  "VERSION" => "0.003",
   "test" => {
     "TESTS" => "t/*.t"
   }

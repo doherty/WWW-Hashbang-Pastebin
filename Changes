@@ -1,6 +1,8 @@
 Changelog for {{$dist->name}}
 
 {{$NEXT}}
+
+0.003     2012-03-31
  * Add missing Template::Toolkit dependency
  * Simplify HTML output mode - now append a + to get line numbering
     * The selected line number will be highlighted
