@@ -1,4 +1,3 @@
-<% lines = content.split("\n") %>
 <% BLOCK line_num -%>
 <a href="#l<% lineno %>" id="l<% lineno %>" class="lineno"><pre><% lineno %></pre></a>
 <% END %>

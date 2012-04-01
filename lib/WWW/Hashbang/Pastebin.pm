@@ -98,7 +98,11 @@ get '/:id' => sub {
 
     headers 'X-Pastebin-ID' => $ext_id;
     if ($line_nos) {
-        return template paste => { content => $paste->content };
+        open my $in, '<', \$paste->content;
+        1 while (<$in>);
+        my $lines = $.;
+        close $in;
+        return template paste => { content => $paste->content, lines => [1..$lines] };
     }
     else {
         content_type('text/plain');
