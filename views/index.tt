@@ -7,7 +7,7 @@ SYNOPSIS
     $ (hostname ; uptime) | curl -F 'p=&lt;-' <% request.uri_base %>
     <% request.uri_base %>/f4s2
 
-    $ chromium-browser <% request.uri_base %>/f4s2.#l7
+    $ chromium-browser <% request.uri_base %>/f4s2+#l2
 
 DESCRIPTION
     This pastebin has no user interface - use "curl" or
@@ -15,8 +15,9 @@ DESCRIPTION
     Your paste's ID is returned in the "X-Pastebin-ID" header; the
     URL in the "X-Pastebin-URL", as well as the response content.
 
-    Append a period to the URL to get line numbers. Add an anchor like "#l1"
-    to jump to the given line number, or click the line number you want.
+    Append a plus sign to the URL to get line numbers. Add an anchor like "#l1"
+    to jump to the given line number, or click the line number you want. The line
+    number for the selected line will be highlighted.
 
 SEE ALSO
     · <a href="http://sprunge.us">http://sprunge.us</a>

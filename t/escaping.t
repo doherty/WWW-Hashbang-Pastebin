@@ -26,11 +26,11 @@ subtest 'plain' => sub {
 subtest 'html' => sub {
     plan tests => 7;
 
-    route_exists            [GET => "/$ID."], "route /$ID. exists";
-    response_status_is      [GET => "/$ID."], 200, 'HTTP OK';
-    response_headers_include[GET => "/$ID."], ['X-Pastebin-ID' => $ID];
-    response_headers_include[GET => "/$ID."], ['Content-Type' => 'text/html'];
-    response_content_like   [GET => "/$ID."], qr/\Qomg\E/, 'known paste content retrieved OK';
-    response_content_unlike [GET => "/$ID."], qr/\Q<omg>\E/, 'no <> in HTML content';
-    response_content_like   [GET => "/$ID."], qr/\Qname="l1"\E/, 'line numbers present';
+    route_exists            [GET => "/$ID+"], "route /$ID. exists";
+    response_status_is      [GET => "/$ID+"], 200, 'HTTP OK';
+    response_headers_include[GET => "/$ID+"], ['X-Pastebin-ID' => $ID];
+    response_headers_include[GET => "/$ID+"], ['Content-Type' => 'text/html'];
+    response_content_like   [GET => "/$ID+"], qr/\Qomg\E/, 'known paste content retrieved OK';
+    response_content_unlike [GET => "/$ID+"], qr/\Q<omg>\E/, 'no <> in HTML content';
+    response_content_like   [GET => "/$ID+"], qr/\Qid="l1"\E/, 'line numbers present';
 };

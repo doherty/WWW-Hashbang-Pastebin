@@ -16,7 +16,7 @@ use DateTime;
 
     $ (hostname ; uptime) | curl -F 'p=<-' http://p.hashbang.ca
     http://p.hashbang.ca/f4s2
-    $ chromium-browser http://p.hashbang.ca/f4s2.#l7
+    $ chromium-browser http://p.hashbang.ca/f4s2+#l2
 
 =for test_synopsis
 1;
@@ -29,14 +29,15 @@ C<p> command to POST paste content. Your paste's ID is returned in the
 C<X-Pastebin-ID> header; the URL in the C<X-Pastebin-URL>, as well as the response
 content.
 
-Append a period to the URL to get line numbers. Add an anchor like C<#l1> to
-jump to the given line number, or click the line number you want.
+Append a plus sign to the URL to get line numbers. Add an anchor like C<#l1> to
+jump to the given line number, or click the line number you want. The line number
+for the selected line will be highlighted.
 
 =cut
 
 my $mapper = do {
     my $key = config->{key} || join '', ('a'..'z', 0..9);
-    $key =~ tr/.//d;
+    $key =~ tr/+//d;
     Integer::Tiny->new($key);
 };
 
@@ -72,7 +73,7 @@ post '/' => sub {
 
 get '/:id' => sub {
     my $ext_id = param('id');
-    my $line_nos = ($ext_id =~ s{\.$}{});
+    my $line_nos = ($ext_id =~ s{\+$}{});
 
     my $int_id = try { $mapper->decrypt( $ext_id ) } || do {
         status 'bad_request';

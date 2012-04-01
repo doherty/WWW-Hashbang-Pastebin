@@ -2,6 +2,8 @@ Changelog for {{$dist->name}}
 
 {{$NEXT}}
  * Add missing Template::Toolkit dependency
+ * Simplify HTML output mode - now append a + to get line numbering
+    * The selected line number will be highlighted
 
 0.002     2012-03-22
  * Add missing YAML dependency
