@@ -1,6 +1,7 @@
 Changelog for {{$dist->name}}
 
 {{$NEXT}}
+ * Add missing Template::Toolkit dependency
 
 0.002     2012-03-22
  * Add missing YAML dependency
