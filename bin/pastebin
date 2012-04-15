@@ -1,0 +1,45 @@
+#!/var/www/p.hashbang.ca/perl5/perls/perl-5.14.2/bin/perl
+#!/usr/bin/env perl
+use strict;
+use warnings;
+# VERSION
+# PODNAME: pastebin
+# ABSTRACT: init script for WWW::Hashbang::Pastebin
+
+use Daemon::Control;
+
+=head1 SYNOPSIS
+
+    pastebin [start|stop|restart|status]
+
+=for test_synopsis
+1;
+__END__
+
+=cut
+
+$ENV{USER} = 'www-data';
+$ENV{PATH} = '/usr/bin:/usr/local/bin';
+$ENV{PLACK_ENV} = 'production';
+$ENV{PLACK_SERVER} = 'Starman';
+
+Daemon::Control->new({
+    name        => 'pastebin',
+    program     => '/var/www/p.hashbang.ca/perl5/perls/perl-5.14.2/bin/plackup',
+    program_args=> [
+        '-l' => '/tmp/pastebin.sock',
+#        '-D',
+        '-a' => '/var/www/p.hashbang.ca/WWW-Hashbang-Pastebin/bin/app.pl',
+    ],
+    fork        => 2,
+    uid         => scalar getpwnam('www-data'),
+    gid         => scalar getgrnam('www-data'),
+    pid_file    => '/var/run/pastebin.pid',
+    stdout_file => '/var/log/pastebin.log',
+    stderr_file => '/var/log/pastebin.log',
+
+    lsb_start   => '$nginx',
+    lsb_stop    => '$nginx',
+    lsb_sdesc   => 'Starts WWW::Hashbang::Pastebin under plackup+Starman',
+    lsb_desc    => 'Starts WWW::Hashbang::Pastebin under plackup+Starman',
+})->run;

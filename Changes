@@ -1,6 +1,7 @@
 Changelog for {{$dist->name}}
 
 {{$NEXT}}
+ * Add a Daemon::Control script
 
 0.003     2012-03-31
  * Add missing Template::Toolkit dependency
