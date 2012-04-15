@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More tests => 8;
-use Test::DBIx::Class;
+use Test::DBIx::Class qw(:resultsets);
 
 fixtures_ok 'basic';
 

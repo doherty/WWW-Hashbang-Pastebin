@@ -8,7 +8,4 @@ use WWW::Hashbang::Pastebin;
 # PODNAME: app.pl
 # ABSTRACT: runner for WWW::Hashbang::Pastebin
 
-WWW::Hashbang::Pastebin::schema->deploy
-    unless $ENV{PLACK_ENV};
-
 dance;
