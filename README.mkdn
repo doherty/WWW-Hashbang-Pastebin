@@ -30,7 +30,7 @@ for the selected line will be highlighted.
 
 # AVAILABILITY
 
-The project homepage is [http://metacpan.org/release/WWW-Hashbang-Pastebin/](http://metacpan.org/release/WWW-Hashbang-Pastebin/).
+The project homepage is [http://p.hashbang.ca](http://p.hashbang.ca).
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit [http://www.perl.com/CPAN/](http://www.perl.com/CPAN/) to find a CPAN
