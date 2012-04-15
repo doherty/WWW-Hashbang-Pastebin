@@ -2,7 +2,7 @@ NAME
     WWW::Hashbang::Pastebin - command line pastebin
 
 VERSION
-    version 0.003
+    version 0.004
 
 SYNOPSIS
         $ (hostname ; uptime) | curl -F 'p=<-' http://p.hashbang.ca

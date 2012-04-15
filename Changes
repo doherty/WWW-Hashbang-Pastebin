@@ -1,6 +1,8 @@
 Changelog for {{$dist->name}}
 
 {{$NEXT}}
+
+0.004     2012-04-15
  * Add a Daemon::Control script
 
 0.003     2012-03-31
