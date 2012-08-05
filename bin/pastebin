@@ -18,8 +18,6 @@ __END__
 
 =cut
 
-$ENV{USER} = 'www-data';
-$ENV{PATH} = '/usr/bin:/usr/local/bin';
 $ENV{PLACK_ENV} = 'production';
 $ENV{PLACK_SERVER} = 'Starman';
 
@@ -28,13 +26,12 @@ Daemon::Control->new({
     program     => '/var/www/p.hashbang.ca/perl5/perls/perl-5.14.2/bin/plackup',
     program_args=> [
         '-l' => '/tmp/pastebin.sock',
-#        '-D',
         '-a' => '/var/www/p.hashbang.ca/WWW-Hashbang-Pastebin/bin/app.pl',
     ],
     fork        => 2,
-    uid         => scalar getpwnam('www-data'),
-    gid         => scalar getgrnam('www-data'),
-    pid_file    => '/var/run/pastebin.pid',
+    user        => 'www-data',
+    group       => 'www-data',
+    pid_file    => '/tmp/pastebin.pid',
     stdout_file => '/var/log/pastebin.log',
     stderr_file => '/var/log/pastebin.log',
 
