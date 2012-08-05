@@ -12,6 +12,7 @@ use DateTime;
                 [1, "test1\nline2", 0, DateTime->now( time_zone => 'UTC' )->subtract( minutes => 5 )],
                 [2, 'test2', 1, DateTime->now( time_zone => 'UTC' )->subtract( minutes => 5 )],
                 [3, '<omg>', 0, DateTime->now( time_zone => 'UTC' )->subtract( minutes => 4 )],
+                [4, "test1\nline2\n\n", 0, DateTime->now( time_zone => 'UTC' )->subtract( minutes => 3 )],
             ]
         ]
     },
