@@ -1,6 +1,7 @@
 Changelog for {{$dist->name}}
 
 {{$NEXT}}
+ * Show the Perl version on the index page
 
 0.004     2012-04-15
  * Add a Daemon::Control script

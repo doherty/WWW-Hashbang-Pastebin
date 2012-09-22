@@ -43,7 +43,7 @@ my $mapper = do {
 
 
 get '/' => sub {
-    return template 'index';
+    return template 'index', { version => $^V };
 };
 
 post '/' => sub {
