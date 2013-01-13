@@ -17,6 +17,7 @@ __PACKAGE__->add_columns(
     'paste_content' => {
         data_type           => 'text',
         accessor            => 'content',
+        size                => 'mediumtext',
     },
     'paste_deleted' => {
         data_type           => 'boolean',
