@@ -30,7 +30,7 @@ sub connection {
     $self->storage($storage);
 
     my $dbname = (split /:/, $info[0], 3)[2];
-    if ($dbname eq 'dbname=:memory:') {
+    if ($dbname and $dbname eq 'dbname=:memory:') {
 #        warn "deploying into $dbname";
         $self->deploy();
     }

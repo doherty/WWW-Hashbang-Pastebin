@@ -7,8 +7,6 @@ use WWW::Hashbang::Pastebin;
 use Dancer::Plugin::DBIC;
 use Dancer::Test;
 
-schema->deploy;
-
 my $rand = rand();
 route_exists [POST => '/'], 'a route handler is defined for POST /';
 my $response = dancer_response('POST', '/', { params  => {p => $rand} });

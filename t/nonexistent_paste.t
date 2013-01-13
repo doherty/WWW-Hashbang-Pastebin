@@ -7,7 +7,6 @@ use WWW::Hashbang::Pastebin;
 use Dancer::Plugin::DBIC;
 use Dancer::Test;
 
-schema->deploy;
 my $data = do 't/etc/schema.pl';
 schema->populate(@{ $data->{fixture_sets}->{basic} });
 
