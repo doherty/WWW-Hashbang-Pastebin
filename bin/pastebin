@@ -7,6 +7,7 @@ use warnings;
 # ABSTRACT: init script for WWW::Hashbang::Pastebin
 
 use Daemon::Control;
+use File::Spec;
 
 =head1 SYNOPSIS
 
@@ -18,6 +19,12 @@ __END__
 
 =cut
 
+my $run_dir = File::Spec->catdir( File::Spec->rootdir, qw{var run www-data-daemons} );
+unless ( -d $run_dir ) {
+    mkdir $run_dir;
+    chown scalar getpwnam('www-data'), scalar getgrnam('www-data'), $run_dir;
+}
+
 $ENV{PLACK_ENV} = 'production';
 $ENV{PLACK_SERVER} = 'Starman';
 
@@ -25,15 +32,15 @@ Daemon::Control->new({
     name        => 'pastebin',
     program     => '/var/www/p.hashbang.ca/perl5/perls/perl-5.16.1/bin/plackup',
     program_args=> [
-        '-l' => '/var/run/www-data-daemons/pastebin.sock',
+        '-l' => File::Spec->catfile( $run_dir, 'pastebin.sock' ),
         '-a' => '/var/www/p.hashbang.ca/WWW-Hashbang-Pastebin/bin/app.pl',
     ],
     fork        => 2,
     user        => 'www-data',
     group       => 'www-data',
-    pid_file    => '/var/run/www-data-daemons/pastebin.pid',
-    stdout_file => '/var/log/www-data-daemons/pastebin.log',
-    stderr_file => '/var/log/www-data-daemons/pastebin.log',
+    pid_file    => File::Spec->catfile( $run_dir, 'pastebin.pid' ),
+    stdout_file => File::Spec->catfile( $run_dir, 'pastebin.log' ),
+    stderr_file => File::Spec->catfile( $run_dir, 'pastebin.log' ),
 
     lsb_start   => '$nginx',
     lsb_stop    => '$nginx',
