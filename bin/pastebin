@@ -1,5 +1,4 @@
-#!/var/www/p.hashbang.ca/perl5/perls/perl-5.16.1/bin/perl
-#!/usr/bin/env perl
+#!/opt/perl5/perls/perl-5.16.3/bin/perl
 use strict;
 use warnings;
 # VERSION
@@ -7,7 +6,7 @@ use warnings;
 # ABSTRACT: init script for WWW::Hashbang::Pastebin
 
 use Daemon::Control;
-use File::Spec;
+use Path::Tiny;
 
 =head1 SYNOPSIS
 
@@ -19,31 +18,34 @@ __END__
 
 =cut
 
-my $run_dir = File::Spec->catdir( File::Spec->rootdir, qw{var run www-data-daemons} );
+my $user = my $group = 'www-data';
+
+my $run_dir = path(qw( / var run www-data-daemons ));
 unless ( -d $run_dir ) {
     mkdir $run_dir;
-    chown scalar getpwnam('www-data'), scalar getgrnam('www-data'), $run_dir;
+    chown scalar getpwnam($user), scalar getgrnam($group), $run_dir;
 }
-
-$ENV{PLACK_ENV} = 'production';
-$ENV{PLACK_SERVER} = 'Starman';
 
 Daemon::Control->new({
     name        => 'pastebin',
-    program     => '/var/www/p.hashbang.ca/perl5/perls/perl-5.16.1/bin/plackup',
+    program     => path(qw( / opt perl5 perls perl-5.16.3 bin plackup )),
     program_args=> [
-        '-l' => File::Spec->catfile( $run_dir, 'pastebin.sock' ),
-        '-a' => '/var/www/p.hashbang.ca/WWW-Hashbang-Pastebin/bin/app.pl',
+        '-s' => 'Starman',
+        '-E' => 'production',
+        '-S' => path( $run_dir, 'pastebin.sock' ),
+        '-I' => path(qw( / var www p.hashbang.ca WWW-Hashbang-Pastebin lib )),
+        '-a' => path(qw( / var www p.hashbang.ca WWW-Hashbang-Pastebin bin app.pl )),
+        map { ('-M' => $_) } qw/ DBIx::Class /,
     ],
     fork        => 2,
-    user        => 'www-data',
-    group       => 'www-data',
-    pid_file    => File::Spec->catfile( $run_dir, 'pastebin.pid' ),
-    stdout_file => File::Spec->catfile( $run_dir, 'pastebin.log' ),
-    stderr_file => File::Spec->catfile( $run_dir, 'pastebin.log' ),
+    user        => $user,
+    group       => $group,
+    pid_file    => path( $run_dir, 'pastebin.pid' ),
+    stdout_file => path( $run_dir, 'pastebin.log' ),
+    stderr_file => path( $run_dir, 'pastebin.log' ),
 
     lsb_start   => '$nginx',
     lsb_stop    => '$nginx',
-    lsb_sdesc   => 'Starts WWW::Hashbang::Pastebin under plackup+Starman',
-    lsb_desc    => 'Starts WWW::Hashbang::Pastebin under plackup+Starman',
+    lsb_sdesc   => 'Starts Starman running WWW::Hashbang::Pastebin',
+    lsb_desc    => 'Starts Starman running WWW::Hashbang::Pastebin',
 })->run;
