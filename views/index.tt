@@ -6,7 +6,6 @@ NAME
 SYNOPSIS
     $ (hostname ; uptime) | curl -F 'p=&lt;-' <% request.uri_base %>
     <% request.uri_base %>/f4s2
-
     $ chromium-browser <% request.uri_base %>/f4s2+#l2
 
 DESCRIPTION
@@ -18,6 +17,10 @@ DESCRIPTION
     Append a plus sign to the URL to get line numbers. Add an anchor like "#l1"
     to jump to the given line number, or click the line number you want. The line
     number for the selected line will be highlighted.
+
+EXAMPLES
+    · dmesg | curl -F 'p=&lt;-' <% request.uri_base %>
+    · curl -F p=@/var/log/syslog <% request.uri_base %>
 
 SEE ALSO
     · <a href="http://sprunge.us">http://sprunge.us</a>

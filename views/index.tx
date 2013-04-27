@@ -15,18 +15,28 @@ NAME
     <a href="https://metacpan.org/module/WWW::Hashbang::Pastebin">WWW::Hashbang::Pastebin</a> - command line pastebin
 
 SYNOPSIS
-    command | curl -F 'p=<-' [% url %]
+    $ (hostname ; uptime) | curl -F 'p=&lt;-' [% url %]
+    <% request.uri_base %>/f4s2
+    $ chromium-browser [% url %]/f4s2+#l2
 
 DESCRIPTION
-    add lang to resulting url for line numbers and syntax highlighting
+    This pastebin has no user interface - use "curl" or
+    <a href="https://metacpan.org/module/WWW::Hashbang::Pastebin::Client">WWW::Hashbang::Pastebin::Client</a>'s "p" command to POST paste content.
+    Your paste's ID is returned in the "X-Pastebin-ID" header; the
+    URL in the "X-Pastebin-URL", as well as the response content.
+
+    Append a plus sign to the URL to get line numbers. Add an anchor like "#l1"
+    to jump to the given line number, or click the line number you want. The line
+    number for the selected line will be highlighted.
 
 EXAMPLES
-    ~$ curl -F 'p=&lt;-' [% url %] < /var/log/maillog
-       [% url %]VZiY
-    ~$ chromium-browser [% url %]VZiY?py#n-7
+    · dmesg | curl -F 'p=&lt;-' [% url %]
+    · curl -F p=@/var/log/syslog [% url %]
 
 SEE ALSO
-    <a href="http://sprunge.us">http://sprunge.us</a>
+    · <a href="http://sprunge.us">http://sprunge.us</a>
+    · <a href="http://p.defau.lt">http://p.defau.lt</a>
+
 </pre>
 </body>
 </html>

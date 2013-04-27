@@ -47,8 +47,19 @@ get '/' => sub {
 };
 
 post '/' => sub {
-    my $paste_content = param('p') || param('sprunge');
-    my $lang = param('lang');
+    my $paste_content = do {
+        my $uploads = request->uploads;
+        if (keys %$uploads > 1) {
+            status 'bad_request';
+            return 'Too many files attached';
+        }
+        elsif (keys %$uploads == 1) {
+            upload( [keys %$uploads]->[0] )->content;
+        }
+        else {
+            param('p') || param('sprunge');
+        }
+    };
 
     unless ($paste_content) {
         status 'bad_request';
@@ -63,7 +74,6 @@ post '/' => sub {
 
     my $ext_id  = $mapper->encrypt($row->id);
     my $ext_url = uri_for("/$ext_id");
-    $ext_url = "$ext_url?$lang" if $lang;
     debug "Created paste $ext_id: $ext_url";
     headers
         'X-Pastebin-ID'     => $ext_id,
