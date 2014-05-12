@@ -5,7 +5,7 @@ use warnings;
 # PODNAME: pastebin
 # ABSTRACT: init script for WWW::Hashbang::Pastebin
 
-use Daemon::Control;
+use Daemon::Control 0.001000;
 use Path::Tiny;
 
 =head1 SYNOPSIS
@@ -21,13 +21,10 @@ __END__
 my $user = my $group = 'www-data';
 
 my $run_dir = path(qw( / var run www-data-daemons ));
-unless ( -d $run_dir ) {
-    mkdir $run_dir;
-    chown scalar getpwnam($user), scalar getgrnam($group), $run_dir;
-}
 
 Daemon::Control->new({
     name        => 'pastebin',
+    resource_dir=> $run_dir,
     program     => path(qw( / opt perl5 perls perl-5.16.3 bin plackup )),
     program_args=> [
         '-s' => 'Starman',
