@@ -1,5 +1,5 @@
 # configuration file for production environment
-
+behind_proxy: 1
 log: "warning"
 logger: "file"
 warnings: 0
@@ -13,7 +13,7 @@ plugins:
         default:
             dsn: dbi:mysql:pastebin
             user: pastebin
-            pass: 
+            pass:
             schema_class: WWW::Hashbang::Pastebin::Schema
     EscapeHTML:
         automatic_escaping: 1
